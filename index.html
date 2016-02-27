@@ -3,8 +3,58 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title>挑战题</title>
+    <style>
+        .ui-table {margin: 20px auto; border-collapse: collapse; font-size: 12px; text-align: center; color: #666;}
+        .ui-table th, .ui-table td {padding: 4px 8px; border: 1px solid #ccc;}
+        .ui-table th {background-color: #f0f0f0;}
+    </style>
+    <script src="http://libs.baidu.com/jquery/1.9.0/jquery.js"></script>
 </head>
 <body>
-
+<table class="ui-table" width="800" id="studentInfo">
+    <caption><h2>XX中学学生资料</h2></caption>
+    <thead>
+    <tr>
+        <th style="width:45px">序号</th>
+        <th>姓名</th>
+        <th>学号</th>
+        <th>性别</th>
+        <th>年龄</th>
+        <th>所在班级</th>
+        <th>富二代</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <td colspan="7">
+            <input type="button" value="加载资料" onclick="DisplayInfo()">
+        </td>
+    </tr>
+    </tbody>
+</table>
+<script>
+    var students = [
+        {"name": "张三", "id": "00145", "sex": "男", "age": "15", "class": "初一(3)班", "vip": "否"},
+        {"name": "李四", "id": "00110", "sex": "女", "age": "15", "class": "初二(2)班", "vip": "否"},
+        {"name": "王五", "id": "00251", "sex": "男", "age": "17", "class": "初一(4)班", "vip": "是"},
+        {"name": "赵六", "id": "00031", "sex": "女", "age": "16", "class": "初二(3)班", "vip": "否"},
+        {"name": "吴七", "id": "00009", "sex": "女", "age": "19", "class": "初三(6)班", "vip": "否"},
+        {"name": "候八", "id": "00352", "sex": "男", "age": "14", "class": "初一(2)班", "vip": "是"},
+    ];
+    function DisplayInfo() {
+        var tbody = $("#studentInfo").find("tbody");
+        tbody.empty();
+        $.each(students,function(index, el) {
+            tbody.append(
+                    "<tr><td>" + parseInt(index+1) + "</td><td>" +
+                    el.name + "</td><td>" +
+                    el.id +   "</td><td>" +
+                    el.sex +   "</td><td>" +
+                    el.age +   "</td><td>" +
+                    el.class +   "</td><td>" +
+                    el.vip +   "</td></tr>");
+        });
+    }
+</script>
 </body>
 </html>
